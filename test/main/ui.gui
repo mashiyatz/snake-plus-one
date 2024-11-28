@@ -1,0 +1,104 @@
+script: "/main/ui.gui_script"
+fonts {
+  name: "roboto-title"
+  font: "/imports/Roboto/Fonts/roboto-medium.font"
+}
+fonts {
+  name: "roboto-subtitle"
+  font: "/imports/Roboto/Fonts/roboto-small.font"
+}
+nodes {
+  position {
+    x: 32.0
+    y: 32.0
+  }
+  size {
+    x: 592.0
+    y: 576.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "bg"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_STRETCH
+  layer: "main_menu"
+  inherit_alpha: true
+  alpha: 0.85
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 296.0
+    y: 288.0
+  }
+  size {
+    x: 592.0
+    y: 576.0
+  }
+  type: TYPE_TEXT
+  text: "snek - the game"
+  font: "roboto-title"
+  id: "title"
+  adjust_mode: ADJUST_MODE_STRETCH
+  parent: "bg"
+  layer: "main_menu"
+}
+nodes {
+  position {
+    x: 296.0
+    y: 232.0
+  }
+  size {
+    x: 592.0
+    y: 576.0
+  }
+  type: TYPE_TEXT
+  text: "space to start"
+  font: "roboto-subtitle"
+  id: "subtitle"
+  adjust_mode: ADJUST_MODE_STRETCH
+  parent: "bg"
+}
+nodes {
+  position {
+    x: 32.0
+    y: 556.0
+  }
+  type: TYPE_TEXT
+  text: "best score: 0"
+  font: "roboto-subtitle"
+  id: "bestscore"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NW
+  parent: "bg"
+  inherit_alpha: true
+  alpha: 0.75
+}
+nodes {
+  position {
+    x: 32.0
+    y: 524.0
+  }
+  type: TYPE_TEXT
+  text: "best time: 0"
+  font: "roboto-subtitle"
+  id: "besttime"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NW
+  parent: "bg"
+  inherit_alpha: true
+  alpha: 0.75
+}
+layers {
+  name: "main_menu"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

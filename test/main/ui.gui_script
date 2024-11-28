@@ -1,0 +1,71 @@
+function init(self)
+	self.isHome = true
+	self.subtitle = gui.get_node("subtitle")
+	self.score = 0
+	self.time = 0
+	self.score_text = gui.get_node("bestscore")
+	self.time_text = gui.get_node("besttime")
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	gui.set_alpha(self.subtitle, math.sin(socket.gettime())^2)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("home") then 
+		gui.set_enabled(gui.get_node("bg"), true)
+		self.isHome = true
+	end
+
+	if message_id == hash("score") then 
+		local newTime = message.time
+		local newScore = message.score
+		if (newTime > self.time) then 
+			gui.set_text(self.time_text, string.format("best time: %.3f", newTime)) 
+			self.time = newTime
+		end
+		if (newScore > self.score) then 
+			gui.set_text(self.score_text, string.format("best score: %s", newScore)) 
+			self.score = newScore
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("space") and action.pressed then
+		if (self.isHome) then 
+			self.isHome = false
+			gui.set_enabled(gui.get_node("bg"), false)
+			msg.post("#snake", "start")
+		end
+	end
+	
+	-- if action_id == hash("click") then 
+	-- 	if (self.isHome) then 
+	-- 		self.isHome = false
+	-- 		gui.set_enabled(gui.get_node("bg"), false)
+	-- 		msg.post("#snake", "start")
+	-- 	end
+	-- end 
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

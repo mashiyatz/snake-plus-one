@@ -1,0 +1,22 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 656
+height = 640
+
+[android]
+input_method = HiddenInputField
+
+[project]
+title = snek the game
+developer = dandylion.dev
+
+[html5]
+show_made_with_defold = 0
+scale_mode = fit
+show_fullscreen_button = 0
+
